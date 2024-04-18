@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/marginSmall"
+    tools:context=".MainActivity">
+
+    <Chronometer
+        android:id="@+id/chrono"
+        android:layout_margin="@dimen/marginSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:format="예약에 걸린 시간: %s"
+        android:gravity="center"
+        android:textSize="20sp"/>
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btnStart"/>
+    <RadioGroup
+        android:id="@+id/rg"
+        android:layout_margin="@dimen/marginSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/rgDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radioDate"
+            />
+        <RadioButton
+            android:id="@+id/rgTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radioTime"/>
+    </RadioGroup>
+    <FrameLayout
+
+        android:layout_margin="@dimen/marginSmall"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <CalendarView
+            android:id="@+id/calender"
+            android:showWeekNumber="false"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TimePicker
+            android:id="@+id/timePick"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:timePickerMode="spinner" />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_margin="@dimen/marginSmall"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <Button
+            android:id="@+id/btinDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnDone"/>
+        <TextView
+            android:id="@+id/textResult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>
