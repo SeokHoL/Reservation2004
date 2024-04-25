@@ -32,32 +32,42 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         chrono =findViewById<Chronometer>(R.id.chrono)
-        btnStart=findViewById<Button>(R.id.btnStart)
-        btnDone=findViewById<Button>(R.id.btinDone)
+
         rg =findViewById<RadioGroup>(R.id.rg)
         calendar = findViewById<DatePicker>(R.id.calender)
         timePick = findViewById<TimePicker>(R.id.timePick)
         textResult = findViewById(R.id.textResult)
 
+
+        rg.visibility = View.INVISIBLE
         calendar.visibility = View.INVISIBLE
         timePick.visibility = View.INVISIBLE
 
         rg.setOnCheckedChangeListener(rgListener)
-        btnStart.setOnClickListener {
+        chrono.setOnClickListener {
             chrono.base =SystemClock.elapsedRealtime()
             chrono.start()
             chrono.setTextColor(Color.MAGENTA)
+            rg.visibility = View.VISIBLE
         }
-        btnDone.setOnClickListener {
+
+
+        textResult.setOnLongClickListener {
             chrono.stop()
             chrono.setTextColor(Color.CYAN)
             selecteddYear = calendar.year
             selectedMonth = calendar.month
             selectedDay = calendar.dayOfMonth
 
-            textResult.setText(""+ selecteddYear + "년" + selectedMonth + "월" + selectedDay + "일")
-            textResult.append("" + timePick.currentHour + "시")
-            textResult.append("" + timePick.currentMinute + "분")
+            textResult.setText(""+selecteddYear+ "년"+ (selectedMonth +1)+ "월"+ selectedDay + "일")
+            textResult.append(""+timePick.currentHour +"시")
+            textResult.append(""+timePick.currentMinute + "분")
+
+            rg.visibility = View.INVISIBLE
+            calendar.visibility = View.INVISIBLE
+            timePick.visibility = View.INVISIBLE
+
+            return@setOnLongClickListener true
         }
 
 //        calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
